@@ -1,0 +1,42 @@
+{
+    // Required
+    "manifest_version": 2,
+    "name": "Long Press New Tab",
+    "version": "4.0",
+
+    // Recommended
+    "description": "Open links as background tabs by clicking links and holding",
+    "icons": {
+        "16": "img/icon16.png",
+        "32": "img/icon32.png",
+        "48": "img/icon48.png",
+        "128": "img/icon128.png"
+    },
+
+    // Optional
+    "author": "Surgei",
+    "background": {
+        // Recommended
+        "persistent": false,
+        // Optional
+        "scripts": ["js/background.js"]
+    },
+    "content_scripts": [{
+            "all_frames": true,
+            "run_at": "document_start",
+            "js": ["js/contentscript.js"],
+            "matches": [
+                "<all_urls>"
+            ]
+        }
+    ],
+    "content_security_policy": "script-src 'self'; object-src 'self'",
+    "minimum_chrome_version": "22",
+    "options_page": "options.html",
+    "options_ui": {
+        "chrome_style": true,
+        "open_in_tab": true,
+        "page": "options.html"
+    },
+    "permissions": ["tabs", "downloads"]
+}
