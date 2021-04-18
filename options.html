@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>Options</title>
+    <link href="css/options.css" rel="stylesheet">
+    <script src="js/options.js"></script>
+</head>
+<body>
+	<div style="text-align: center;margin: auto;border: solid 1px #ccc; border-radius: 6px; padding: 0 0 90px 0; width: 700px;">
+		<h3>Long Press</h3>
+		<div style="padding:15px 0 0 25px;text-align: center;">
+			<div style="text-align: center;">
+				<label style="font-size:13px;width:225px;display:inline-block">Left mouse button press</label>
+				<select id="dragactionleft" class="selectclass">
+					<option value="none">NONE</option>
+					<option value="bg" selected="">New Tab (Background)</option>
+					<option value="new">New Tab (Foreground)</option>
+					<option value="crnt">Current Tab</option>
+					<option value="save">Save Link</option>
+					<option value="copy">Copy</option>
+					<option value="web">Send Web Service</option>
+					<option value="webbg">Send Web Service(Background)</option>
+				</select>
+				<div style="margin-top: 8px;visibility: hidden;" id="web_service_lurl_container">
+					<label style="font-size:13px;width:232px;display:inline-block"></label>
+					<input type="text" id="web_service_lurl_input" placeholder="URL" class="web_service_url_input">
+				</div>
+			</div>
+			<div style="text-align: center;visibility: hidden;">
+				<label style="font-size:13px;width:225px;display:inline-block">Middle mouse button press</label>
+				<select id="dragactionmiddle" class="selectclass">
+					<option value="none" selected>NONE</option>
+					<option value="bg">New Tab (Background)</option>
+					<option value="new">New Tab (Foreground)</option>
+					<option value="crnt">Current Tab</option>
+					<option value="save">Save Link</option>
+					<option value="copy">Copy</option>
+					<option value="web">Send Web Service</option>
+					<option value="webbg">Send Web Service(Background)</option>
+				</select>
+				<div style="margin-top: 8px;visibility: hidden;" id="web_service_murl_container">
+					<label style="font-size:13px;width:232px;display:inline-block"></label>
+					<input type="text" id="web_service_murl_input" placeholder="URL" class="web_service_url_input">
+				</div>
+			</div>
+			<div style="text-align: center;">
+				<label style="font-size:13px;width:225px;display:inline-block">Right mouse button press</label>
+				<select id="dragactionright" class="selectclass">
+					<option value="none" selected>NONE</option>
+					<option value="bg">New Tab (Background)</option>
+					<option value="new">New Tab (Foreground)</option>
+					<option value="crnt">Current Tab</option>
+					<option value="save">Save Link</option>
+					<option value="copy">Copy</option>
+					<option value="web">Send Web Service</option>
+					<option value="webbg">Send Web Service(Background)</option>
+				</select>
+				<div style="margin-top: 8px;visibility: hidden;" id="web_service_rurl_container">
+					<label style="font-size:13px;width:232px;display:inline-block"></label>
+					<input type="text" id="web_service_rurl_input" placeholder="URL" class="web_service_url_input">
+				</div>
+			</div>
+		</div>
+		<div style="padding:35px 0 0 25px">
+			<div style="text-align: center;">
+				<label style="font-size:13px;">Long-press duration</label><br>
+				<input type="range" min="100" max="3000" value="350" id="detectval" step="10"><br>
+				<label id="detectvallbl">350</label> ms
+			</div>
+		</div>
+	</div>
+	<div style="text-align: center;margin: auto;border: solid 1px #ccc; border-radius: 6px; padding: 0 0 90px 0; width: 700px;margin-top:44px">
+		<h3>Drag Link</h3>
+		<label><input type="checkbox" id="enabledrag">Enabled</label>
+		<div style="display:none" id="dragcontainer">
+			<div style="padding:65px 0 0 25px">
+				<div style="text-align: center;">
+					<label style="font-size:13px;width:55px;display:inline-block">Up</label>
+					<select id="ddragactionup" class="selectclass">
+						<option value="none" selected>NONE</option>
+						<option value="bg">New Tab (Background)</option>
+						<option value="new">New Tab (Foreground)</option>
+						<option value="crnt">Current Tab</option>
+						<option value="save">Save Link</option>
+						<option value="copy">Copy</option>
+						<option value="web">Send Web Service</option>
+						<option value="webbg">Send Web Service(Background)</option>					
+					</select>
+					<div style="margin-top: 8px;visibility: hidden;" id="web_service_duurl_container">
+						<label style="font-size:13px;width:90px;display:inline-block"></label>
+						<input type="text" id="web_service_duurl_input" placeholder="URL" class="web_service_url_input">
+					</div>
+				</div>
+				<div style="text-align: center;margin-top: 24px;">
+					<label style="font-size:13px;width:55px;display:inline-block">Down</label>
+					<select id="ddragactiondown" class="selectclass">
+						<option value="none" selected>NONE</option>
+						<option value="bg">New Tab (Background)</option>
+						<option value="new">New Tab (Foreground)</option>
+						<option value="crnt">Current Tab</option>
+						<option value="save">Save Link</option>
+						<option value="copy">Copy</option>
+						<option value="web">Send Web Service</option>
+						<option value="webbg">Send Web Service(Background)</option>											
+					</select>
+					<div style="margin-top: 8px;visibility: hidden;" id="web_service_ddurl_container">
+						<label style="font-size:13px;width:90px;display:inline-block"></label>
+						<input type="text" id="web_service_ddurl_input" placeholder="URL" class="web_service_url_input">
+					</div>
+				</div>
+				<div style="text-align: center;margin-top: 24px;">
+					<label style="font-size:13px;width:55px;display:inline-block">Left</label>
+					<select id="ddragactionleft" class="selectclass">
+						<option value="none" selected>NONE</option>
+						<option value="bg">New Tab (Background)</option>
+						<option value="new">New Tab (Foreground)</option>
+						<option value="crnt">Current Tab</option>
+						<option value="save">Save Link</option>
+						<option value="copy">Copy</option>
+						<option value="web">Send Web Service</option>
+						<option value="webbg">Send Web Service(Background)</option>																	
+					</select>
+					<div style="margin-top: 8px;visibility: hidden;" id="web_service_dlurl_container">
+						<label style="font-size:13px;width:90px;display:inline-block"></label>
+						<input type="text" id="web_service_dlurl_input" placeholder="URL" class="web_service_url_input">
+					</div>
+				</div>
+				<div style="text-align: center;margin-top: 24px;">
+					<label style="font-size:13px;width:55px;display:inline-block">Right</label>
+					<select id="ddragactionright" class="selectclass">
+						<option value="none" selected>NONE</option>
+						<option value="bg">New Tab (Background)</option>
+						<option value="new">New Tab (Foreground)</option>
+						<option value="crnt">Current Tab</option>
+						<option value="save">Save Link</option>
+						<option value="copy">Copy</option>
+						<option value="web">Send Web Service</option>
+						<option value="webbg">Send Web Service(Background)</option>											
+					</select>
+					<div style="margin-top: 8px;visibility: hidden;" id="web_service_drurl_container">
+						<label style="font-size:13px;width:90px;display:inline-block"></label>
+						<input type="text" id="web_service_drurl_input" placeholder="URL" class="web_service_url_input">
+					</div>
+				</div>
+			</div>
+			<div style="padding:35px 0 0 25px">
+				<div style="text-align: center;">
+					<label style="font-size:13px;">Detection Start</label><br>
+					<input type="range" min="30" max="500" value="100" id="ddetectval" step="10"><br>
+					<label id="ddetectvallbl">100</label> pixels
+				</div>
+			</div>
+		</div>
+	</div>
+	<div style="margin: auto;border-radius: 6px; padding: 0 0 90px 0; width: 700px;margin-top:64px">
+		<div style="padding:45px 0 0 25px">
+			<div style="text-align: center;">
+	            <div>Exceptions<img src="img/add.png" id="addbutton2"></div>
+	            <div id="exceptpopupllist"></div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
