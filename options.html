@@ -17,10 +17,6 @@
 					<option value="bg" selected="">New Tab (Background)</option>
 					<option value="new">New Tab (Foreground)</option>
 					<option value="crnt">Current Tab</option>
-					<option value="save">Save Link</option>
-					<option value="copy">Copy</option>
-					<option value="web">Send Web Service</option>
-					<option value="webbg">Send Web Service(Background)</option>
 				</select>
 				<div style="margin-top: 8px;visibility: hidden;" id="web_service_lurl_container">
 					<label style="font-size:13px;width:232px;display:inline-block"></label>
@@ -34,10 +30,6 @@
 					<option value="bg">New Tab (Background)</option>
 					<option value="new">New Tab (Foreground)</option>
 					<option value="crnt">Current Tab</option>
-					<option value="save">Save Link</option>
-					<option value="copy">Copy</option>
-					<option value="web">Send Web Service</option>
-					<option value="webbg">Send Web Service(Background)</option>
 				</select>
 				<div style="margin-top: 8px;visibility: hidden;" id="web_service_murl_container">
 					<label style="font-size:13px;width:232px;display:inline-block"></label>
@@ -51,10 +43,6 @@
 					<option value="bg">New Tab (Background)</option>
 					<option value="new">New Tab (Foreground)</option>
 					<option value="crnt">Current Tab</option>
-					<option value="save">Save Link</option>
-					<option value="copy">Copy</option>
-					<option value="web">Send Web Service</option>
-					<option value="webbg">Send Web Service(Background)</option>
 				</select>
 				<div style="margin-top: 8px;visibility: hidden;" id="web_service_rurl_container">
 					<label style="font-size:13px;width:232px;display:inline-block"></label>
@@ -65,14 +53,17 @@
 		<div style="padding:35px 0 0 25px">
 			<div style="text-align: center;">
 				<label style="font-size:13px;">Long-press duration</label><br>
-				<input type="range" min="100" max="3000" value="350" id="detectval" step="10"><br>
-				<label id="detectvallbl">350</label> ms
+				<input type="range" min="100" max="3000" value="250" id="detectval" step="10"><br>
+				<label id="detectvallbl">250</label> ms
 			</div>
 		</div>
 	</div>
 	<div style="text-align: center;margin: auto;border: solid 1px #ccc; border-radius: 6px; padding: 0 0 90px 0; width: 700px;margin-top:44px">
-		<h3>Drag Link</h3>
-		<label><input type="checkbox" id="enabledrag">Enabled</label>
+		<h3>Misc. Options</h3>
+		<label><input type="checkbox" id="enabledrag" style="margin-right: 5px">Enable Drag Link feature</label>
+		<p>
+		<label><input type="checkbox" id="enablenextto" style="margin-right: 5px">Open Next to Current Tab</label>
+		</p>
 		<div style="display:none" id="dragcontainer">
 			<div style="padding:65px 0 0 25px">
 				<div style="text-align: center;">
@@ -81,11 +72,7 @@
 						<option value="none" selected>NONE</option>
 						<option value="bg">New Tab (Background)</option>
 						<option value="new">New Tab (Foreground)</option>
-						<option value="crnt">Current Tab</option>
-						<option value="save">Save Link</option>
-						<option value="copy">Copy</option>
-						<option value="web">Send Web Service</option>
-						<option value="webbg">Send Web Service(Background)</option>					
+						<option value="crnt">Current Tab</option>				
 					</select>
 					<div style="margin-top: 8px;visibility: hidden;" id="web_service_duurl_container">
 						<label style="font-size:13px;width:90px;display:inline-block"></label>
@@ -98,11 +85,7 @@
 						<option value="none" selected>NONE</option>
 						<option value="bg">New Tab (Background)</option>
 						<option value="new">New Tab (Foreground)</option>
-						<option value="crnt">Current Tab</option>
-						<option value="save">Save Link</option>
-						<option value="copy">Copy</option>
-						<option value="web">Send Web Service</option>
-						<option value="webbg">Send Web Service(Background)</option>											
+						<option value="crnt">Current Tab</option>									
 					</select>
 					<div style="margin-top: 8px;visibility: hidden;" id="web_service_ddurl_container">
 						<label style="font-size:13px;width:90px;display:inline-block"></label>
@@ -115,11 +98,7 @@
 						<option value="none" selected>NONE</option>
 						<option value="bg">New Tab (Background)</option>
 						<option value="new">New Tab (Foreground)</option>
-						<option value="crnt">Current Tab</option>
-						<option value="save">Save Link</option>
-						<option value="copy">Copy</option>
-						<option value="web">Send Web Service</option>
-						<option value="webbg">Send Web Service(Background)</option>																	
+						<option value="crnt">Current Tab</option>															
 					</select>
 					<div style="margin-top: 8px;visibility: hidden;" id="web_service_dlurl_container">
 						<label style="font-size:13px;width:90px;display:inline-block"></label>
@@ -132,11 +111,7 @@
 						<option value="none" selected>NONE</option>
 						<option value="bg">New Tab (Background)</option>
 						<option value="new">New Tab (Foreground)</option>
-						<option value="crnt">Current Tab</option>
-						<option value="save">Save Link</option>
-						<option value="copy">Copy</option>
-						<option value="web">Send Web Service</option>
-						<option value="webbg">Send Web Service(Background)</option>											
+						<option value="crnt">Current Tab</option>									
 					</select>
 					<div style="margin-top: 8px;visibility: hidden;" id="web_service_drurl_container">
 						<label style="font-size:13px;width:90px;display:inline-block"></label>
