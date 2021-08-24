@@ -18,4 +18,5 @@ This extension is purely based off of the firefox extension (linked above) and c
 ### 2021-08-23
 - Add new feature: Open Tab Next To Current
   - Multiple new tabs from the same opener tab will be appended
+- Reduce Long-press duration wait time to 250ms
 - Remove unnecessary options
