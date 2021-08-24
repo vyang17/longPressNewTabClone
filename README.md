@@ -12,3 +12,11 @@ This extension is purely based off of the firefox extension (linked above) and c
 3. Toggle 'Developer Mode'. Three new buttons should appear.
 4. Select 'Load unpacked'.
 5. Browse to the new folder created earlier and confirm by clicking 'Select Folder'.
+
+
+## Changelog
+### 2021-08-23
+- Add new feature: Open Tab Next To Current
+  - Multiple new tabs from the same opener tab will be appended
+- Reduce Long-press duration wait time to 250ms
+- Remove unnecessary options

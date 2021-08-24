@@ -41,8 +41,9 @@ function loadOption(){
 		optobj.l = "bg";
 		optobj.m = "none";
 		optobj.r = "none";
-		optobj.waittime = 350;
+		optobj.waittime = 250;
 		optobj.mdrag = false;
+		optobj.nextto = false;
 		optobj.dl = "none";
 		optobj.dr = "none";
 		optobj.du = "none";
@@ -57,23 +58,14 @@ function loadOption(){
         optobj.ddurl = "";
 	}
 }
-function downloadItems(url){
-    var opt = {saveAs:true,url:url};
-    chrome.downloads.download(opt,function(dlid){
-    });
+function createTabNextToCurrent(url, active) {
+  chrome.tabs.query({currentWindow: true, active: true}, tabs => {
+    // console.log(tabs[0].windowId + ': tabs.query - set currentIndex = tab.index: ' + tabs[0].index + ' id: ' + tabs[0].id);
+	chrome.tabs.create({url:url,active:active,index:tabs[0].index,openerTabId:tabs[0].id});
+  });
 }
-function copyStrings(str){
-    var inpt = document.createElement("input");
-    document.body.appendChild(inpt);
-    inpt.setAttribute("type","text");
-    inpt.value = str;
-    inpt.focus();
-    inpt.select();
-    document.execCommand("copy");
-    setTimeout(function(){
-        document.body.removeChild(inpt);
-    },1000);
-}
+
+
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     if(request.stat == "init"){
 		loadOption();
@@ -92,12 +84,20 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
         sendResponse({});
     }else if(request.tab == "new"){
 		var url = request.url;
-		chrome.tabs.create({url:url,active:true});
+		if(optobj.nextto) {
+			createTabNextToCurrent(url, true);
+		} else {
+			chrome.tabs.create({url:url,active:true});
+		}
         sendResponse({});
     }else if(request.tab == "newbg"){
 		var url = request.url;
-		chrome.tabs.create({url:url,active:false});
-        sendResponse({});
+		if(optobj.nextto) {
+			createTabNextToCurrent(url, false);
+		} else {
+			chrome.tabs.create({url:url,active:false});
+        }
+		sendResponse({});
     }else if(request.tab == "save"){
 		var url = request.url;
     	downloadItems(url);

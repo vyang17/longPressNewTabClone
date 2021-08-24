@@ -5,8 +5,9 @@ optobj.excpetoptionarray = [];
 optobj.l = "bg";
 optobj.m = "none";
 optobj.r = "none";
-optobj.waittime = 350;
+optobj.waittime = 250;
 optobj.mdrag = false;
+optobj.nextto = false;
 optobj.dl = "none";
 optobj.dr = "none";
 optobj.du = "none";
@@ -116,20 +117,8 @@ document.addEventListener("DOMContentLoaded",function(e){
 	},false);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 	document.getElementById("enabledrag").addEventListener("change",changeEnableDrag,false);
+	document.getElementById("enablenextto").addEventListener("change",changeEnableNextTo,false);
 	document.getElementById("ddetectval").addEventListener("change",dchangeDetectVal,false);
 	document.getElementById("ddetectval").value = optobj.dxval;
 	document.getElementById("ddetectvallbl").textContent = optobj.dxval;
@@ -137,14 +126,11 @@ document.addEventListener("DOMContentLoaded",function(e){
 		document.getElementById("enabledrag").checked = true;
 		document.getElementById("dragcontainer").style.display = "block"
 	}
+	
+	if(optobj.nextto){
+		document.getElementById("enablenextto").checked = true;
+	}
 }, false);
-
-
-
-
-
-
-
 
 
 
@@ -163,14 +149,6 @@ function changeWebServiceURL(elem,optname){
 	optobj[optname] = elem.value.replace(/^\s+|\s+$/g, "");
 	storeOption();
 }
-
-
-
-
-
-
-
-
 function dchangeActionUp(e){
 	var val = this.value;
 	optobj.du = val;
@@ -204,6 +182,14 @@ function changeEnableDrag(e){
 	}else{
 		optobj.mdrag = false;
 		document.getElementById("dragcontainer").style.display = "none"
+	};
+	storeOption();
+}
+function changeEnableNextTo(e){
+	if (this.checked) {
+		optobj.nextto = true;
+	}else{
+		optobj.nextto = false;
 	};
 	storeOption();
 }
