@@ -61,7 +61,7 @@ function loadOption(){
 function createTabNextToCurrent(url, active) {
   chrome.tabs.query({currentWindow: true, active: true}, tabs => {
     // console.log(tabs[0].windowId + ': tabs.query - set currentIndex = tab.index: ' + tabs[0].index + ' id: ' + tabs[0].id);
-	chrome.tabs.create({url:url,active:active,index:tabs[0].index,openerTabId:tabs[0].id});
+	chrome.tabs.create({url:url,active:active,index:tabs[0].index+1,openerTabId:tabs[0].id});
   });
 }
 
