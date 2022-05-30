@@ -73,7 +73,10 @@ async function loadOption() {
         console.log("optobj before = ", optobj);
         console.log("loaded options");
 
-        return optobj;
+        //return optobj;
+        return new Promise(resolve => {
+            resolve(optobj);
+        });
     });
 }
 
@@ -84,6 +87,9 @@ function createTabNextToCurrent(url, active) {
     });
 }
 
+(async () => {
+    optobj = await loadOption();
+})();
 
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     if (request.stat == "init") {
@@ -122,9 +128,11 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
                 if (!checkExceptList(url, optobj.excpetoptionarray)) {
                     console.log("optobj = ", optobj);
                     sendResponse({ request: "stat", opt: optobj });
+                    return true;
                 } else {
                     console.log("hit an exception URL")
                     sendResponse({});
+                    return true;
                 }
                 
             }
@@ -138,6 +146,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
             chrome.tabs.update(tabid, { url: url });
         }
         sendResponse({});
+        return true;
     } else if (request.tab == "new") {
         var url = request.url;
         if (optobj.nextto) {
@@ -146,6 +155,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
             chrome.tabs.create({ url: url, active: true });
         }
         sendResponse({});
+        return true;
     } else if (request.tab == "newbg") {
         var url = request.url;
         if (optobj.nextto) {
@@ -154,12 +164,15 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
             chrome.tabs.create({ url: url, active: false });
         }
         sendResponse({});
+        return true;
     } else if (request.tab == "save") {
         var url = request.url;
         downloadItems(url);
         sendResponse({});
+        return true;
     } else if (request.tab == "copy") {
         var url = request.url;
         copyStrings(url);
     }
+    return true;
 });

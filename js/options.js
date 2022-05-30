@@ -32,7 +32,10 @@ optobj.ddurl = "";
 
 document.addEventListener("DOMContentLoaded", function (e) {
     LS.getItem("opt_obj").then((opt) => {
-        if (opt) optobj = JSON.parse(opt);
+
+        if (opt) {
+            optobj = JSON.parse(opt);
+        }
 
         var eurlary = optobj.excpetoptionarray;
         if (eurlary.length > 0) {
@@ -302,7 +305,4 @@ function clickAddButton2() {
 }
 function storeOption() {
     LS.setItem("opt_obj", JSON.stringify(optobj));
-    //chrome.runtime.getBackgroundPage(function (bgpage) {
-    //    bgpage.setOption(optobj);
-    //});
 }

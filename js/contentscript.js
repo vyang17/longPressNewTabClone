@@ -42,7 +42,7 @@ function addTag() {
                 X = 0;
                 Y = 0;
             }
-            checkA(e.target, e.button, e)
+            checkA(e.target, e.button, e);
             if (e.target && e.target.tagName === "IMG") {
                 delem = null;
             }
@@ -74,26 +74,33 @@ function checkA(elem, button, e, mode) {
         elem.addEventListener("click", clickLink, true);
         chrome.runtime.sendMessage({ stat: "init", url: host }, function (resp) {
             console.log("resp = ", resp);
-            if (!resp.opt || !resp.opt.l) return;
-            optobj = resp.opt;
-            if (button === 0 && optobj.l !== "none") {
-                press(e, elem, button);
-            } else if (button === 1 && optobj.m !== "none") {
-                press(e, elem, button);
-            } else if (button === 2 && optobj.r !== "none") {
-                press(e, elem, button);
-            }
-            function press(e, elem, button) {
-                if (!mouseupflag) {
-                    downpos.x = e.x;
-                    downpos.y = e.y;
-                    clearTimeout(eventtimerid);
-                    eventtimerid = setTimeout(function () {
-                        clickEmulate(elem, button);
-                        canselclickflag = true;
-                    }, optobj.waittime);
+
+            if (resp) {
+                if (!resp.opt || !resp.opt.l) {
+                    return;
+                }
+
+                optobj = resp.opt;
+                if (button === 0 && optobj.l !== "none") {
+                    press(e, elem, button);
+                } else if (button === 1 && optobj.m !== "none") {
+                    press(e, elem, button);
+                } else if (button === 2 && optobj.r !== "none") {
+                    press(e, elem, button);
+                }
+                function press(e, elem, button) {
+                    if (!mouseupflag) {
+                        downpos.x = e.x;
+                        downpos.y = e.y;
+                        clearTimeout(eventtimerid);
+                        eventtimerid = setTimeout(function () {
+                            clickEmulate(elem, button);
+                            canselclickflag = true;
+                        }, optobj.waittime);
+                    }
                 }
             }
+
         });
         if (getSelectedNode() == elem) {
             delem = null;
@@ -246,4 +253,5 @@ function clickEmulate(elem, button, wurl) {
         }
     }
 }
-addTag()
+
+addTag();
