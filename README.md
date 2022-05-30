@@ -15,6 +15,18 @@ This extension is purely based off of the firefox extension (linked above) and c
 
 
 ## Changelog
+
+### 2022-05-29
+- Update to Manifest Version 3
+- Options UI
+    - Dark background
+    - Change font
+    - Increase font size
+    - Change font color of headers to blue
+    - Make long-press duration slider update its value in realtime
+    - Reduce Long-press duration wait time to 200ms
+    - Adjust max duration from 3000ms to 1000ms
+
 ### 2021-08-23
 - Add new feature: Open Tab Next To Current
   - Multiple new tabs from the same opener tab will be appended
