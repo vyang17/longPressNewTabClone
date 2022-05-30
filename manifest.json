@@ -1,10 +1,7 @@
 {
-    // Required
     "manifest_version": 3,
     "name": "Long Press New Tab",
     "version": "5.0",
-
-    // Recommended
     "description": "Open links as background tabs by clicking links and holding",
     "icons": {
         "16": "img/icon16.png",
@@ -12,9 +9,7 @@
         "48": "img/icon48.png",
         "128": "img/icon128.png"
     },
-
-    // Optional
-    "author": "Victor",
+    "author": "V & Z",
     "background": {
         "service_worker": "background.js"
     },

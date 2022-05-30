@@ -1,4 +1,3 @@
-//import { LS } from './localstorage.js';
 const LS = {
     getAllItems: () => chrome.storage.local.get(),
     getItem: async key => (await chrome.storage.local.get(key))[key],

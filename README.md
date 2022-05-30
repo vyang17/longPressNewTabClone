@@ -1,9 +1,9 @@
 # longPressNewTabClone
-clone of Long-Press-New-Tab extension originally by Kunihiro Ando, based on the [firefox extension](https://addons.mozilla.org/en-US/firefox/addon/long_press_new_tab/).
+Clone of Long-Press-New-Tab extension originally by Kunihiro Ando, based on the [firefox extension](https://addons.mozilla.org/en-US/firefox/addon/long_press_new_tab/).
 
 Some time in April 2021, the Long-Press-New-Tab extension in Chrome disappeared, citing a violation in the Chrome Web Store policy. While taking a look at the original chrome-extension code, the ownership of the redirection URLs embedded in JS files have changed, posing a possible privacy/security concern.
 
-This extension is purely based off of the firefox extension (linked above) and contains no redirection services.
+This extension is based off of the firefox extension (linked above) and contains no redirection services.
 
 
 ## Installation Instructions
@@ -18,7 +18,8 @@ This extension is purely based off of the firefox extension (linked above) and c
 
 ### 2022-05-29 (v5.0)
 - Update to Manifest Version 3
-    - Chrome may display some errors (attributed to my lack of knowledge on async methods, but core functionality should be same as v4.1
+    - Chrome may display some errors (attributed to my lack of knowledge on async methods), but core functionality should be same as v4.1
+    - async methods may be missing error handling (try, catch). I may fix it if it causes major problems, but for now this will have to do.
 - Options UI
     - Dark background
     - Change font

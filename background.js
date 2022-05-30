@@ -73,7 +73,6 @@ async function loadOption() {
         console.log("optobj before = ", optobj);
         console.log("loaded options");
 
-        //return optobj;
         return new Promise(resolve => {
             resolve(optobj);
         });
@@ -95,49 +94,27 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     if (request.stat == "init") {
         var url = request.url;
 
-        //(async () => {
-        //    optobj = await loadOption();
-
-        //    if (optobj) {
-
-        //        console.log("optobj after= ", optobj);
-
-        //        if (!checkExceptList(url, optobj.excpetoptionarray)) {
-        //            console.log("optobj = ", optobj);
-        //            sendResponse({ request: "stat", opt: optobj });
-        //        } else {
-        //            console.log("hit an exception URL")
-        //            sendResponse({});
-        //        }
-
-        //    }
-
-        //})();
-
-        //return true;
         console.log("before LoadOptions");
-/*        loadOption().then((optobj) => {*/
-            console.log("after LoadOptions");
+        console.log("after LoadOptions");
 
-            (async () => {
-                optobj = await loadOption();
-            })();
+        (async () => {
+            optobj = await loadOption();
+        })();
 
-            if (optobj) {
-                console.log("optobj after= ", optobj);
-                if (!checkExceptList(url, optobj.excpetoptionarray)) {
-                    console.log("optobj = ", optobj);
-                    sendResponse({ request: "stat", opt: optobj });
-                    return true;
-                } else {
-                    console.log("hit an exception URL")
-                    sendResponse({});
-                    return true;
-                }
-                
+        if (optobj) {
+            console.log("optobj after= ", optobj);
+            if (!checkExceptList(url, optobj.excpetoptionarray)) {
+                console.log("optobj = ", optobj);
+                sendResponse({ request: "stat", opt: optobj });
+                return true;
+            } else {
+                console.log("hit an exception URL")
+                sendResponse({});
+                return true;
             }
-            return true;
-        //});
+
+        }
+        return true;
 
     } else if (request.tab == "url") {
         var url = request.url;
