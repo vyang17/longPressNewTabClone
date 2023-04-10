@@ -49,6 +49,7 @@ async function loadOption() {
         if (lclobj) {
             optobj = JSON.parse(lclobj);
         } else {
+            optobj = {};
             optobj.excpetoptionarray = [];
             optobj.l = "bg";
             optobj.m = "none";
